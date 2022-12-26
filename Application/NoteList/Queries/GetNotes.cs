@@ -11,7 +11,7 @@ namespace Application.NoteList.Queries
 
             using (var db = new AppDBContext())
             {
-                return await db.NotesClean.ToListAsync();
+                return await db.Notes.ToListAsync();
 
             }
         }

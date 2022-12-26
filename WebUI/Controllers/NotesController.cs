@@ -1,7 +1,9 @@
 ﻿using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ReactNoteAPI.Data;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +13,8 @@ namespace WebUI.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
+        Note note = new Note();
+
         // GET: api/<NotesController>
         [HttpGet]
         [Authorize]
@@ -22,6 +26,7 @@ namespace WebUI.Controllers
 
         // GET api/<NotesController>/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Get(int id)
         {
             var result = await NoteRepository.GetNoteByID(id);
@@ -52,8 +57,10 @@ namespace WebUI.Controllers
 
         // PUT api/<NotesController>/5
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Put([FromBody] Note note)
         {
+
             bool result = await NoteRepository.Update(note);
             if (result)
             {
@@ -67,10 +74,22 @@ namespace WebUI.Controllers
 
         // DELETE api/<NotesController>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
 
-            var result = await NoteRepository.Delete(id);
+            var currentUserEmail = "";
+
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            if (identity != null) { 
+                var userClaims = identity.Claims;
+
+                currentUserEmail = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Email)?.Value;
+            }
+
+
+            var result = await NoteRepository.Delete(id, currentUserEmail);
             if (result)
             {
                 return Ok(result);

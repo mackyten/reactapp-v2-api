@@ -8,10 +8,14 @@ namespace Domain
 {
     public class AppDBContext : DbContext
     {
-        public DbSet<Note> NotesClean { get; set; }
+        public DbSet<Note> Notes { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=NotesClean;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=NoteDB;Trusted_Connection=True;");
         }
     }
 }

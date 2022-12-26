@@ -41,8 +41,8 @@ namespace ReactNoteAPI.Data
         }
 
         //delete
-        public async static Task<bool> Delete(int noteId) {
-            var result = await DeleteNote.DeleteNoteAsync(noteId);
+        public async static Task<bool> Delete(int noteId, string currentUserEmail) {
+            var result = await DeleteNote.DeleteNoteAsync(noteId, currentUserEmail);
             return result;
         }
     }

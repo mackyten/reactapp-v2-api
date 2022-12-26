@@ -13,3 +13,18 @@ C:\Users\Acer\source\repos\NoteTaker_API\Application\obj\Debug\net6.0\Applicatio
 C:\Users\Acer\source\repos\NoteTaker_API\Application\obj\Debug\net6.0\refint\Application.dll
 C:\Users\Acer\source\repos\NoteTaker_API\Application\obj\Debug\net6.0\Application.pdb
 C:\Users\Acer\source\repos\NoteTaker_API\Application\obj\Debug\net6.0\ref\Application.dll
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\bin\Debug\net6.0\Application.deps.json
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\bin\Debug\net6.0\Application.dll
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\bin\Debug\net6.0\Application.pdb
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\bin\Debug\net6.0\Domain.dll
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\bin\Debug\net6.0\Domain.pdb
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.dll
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\refint\Application.dll
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\Application.pdb
+D:\Users\Acer\BizBox Project BackUp\NoteTaker_API\Application\obj\Debug\net6.0\ref\Application.dll

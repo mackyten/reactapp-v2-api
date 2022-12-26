@@ -17,7 +17,7 @@ namespace Application.NoteList.Commands
 
                 try
                 {
-                    await db.NotesClean.AddAsync(noteToCreate);
+                    await db.Notes.AddAsync(noteToCreate);
                     return await db.SaveChangesAsync() >= 1;
                 }
                 catch (Exception)

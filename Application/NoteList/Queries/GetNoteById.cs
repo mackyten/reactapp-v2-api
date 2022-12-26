@@ -10,7 +10,7 @@ namespace Application.NoteList.Queries
 
             using (var db = new AppDBContext())
             {
-                return await db.NotesClean.FirstOrDefaultAsync(note => note.Id == noteID);
+                return await db.Notes.FirstOrDefaultAsync(note => note.Id == noteID);
             }
         }
     }

@@ -10,7 +10,7 @@ namespace Application.NoteList.Commands
 {
     public class DeleteNote
     {
-        public async static Task<bool> DeleteNoteAsync(int noteId)
+        public async static Task<bool> DeleteNoteAsync(int noteId, string currentUserEmail)
         {
             using (var db = new AppDBContext())
             {
@@ -18,9 +18,18 @@ namespace Application.NoteList.Commands
                 {
                     Note postToDelete = await GetNoteById.GetNoteByIdAsync(noteId);
 
-                    db.Remove(postToDelete);
+                    if (currentUserEmail == postToDelete.Owner) {
+                        db.Remove(postToDelete);
 
-                    return await db.SaveChangesAsync() >= 1;
+                        return await db.SaveChangesAsync() >= 1;
+                    } else { 
+                        return false;
+                    }
+
+                    
+                 
+
+                    
                 }
                 catch (Exception)
                 {

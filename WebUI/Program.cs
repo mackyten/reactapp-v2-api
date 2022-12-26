@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using WebUI.AuthService;
+
+using static System.Net.WebRequestMethods;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,27 +21,21 @@ builder.Services.AddCors(options => {
         });
 });
 
-builder.Services.AddAuthentication(options => {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    }).AddJwtBearer(options => {
-        options.Authority = "https://dev-i1ukqqc3wcdbhyix.us.auth0.com/";
-        options.Audience = "https://localhost:7231/";
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "https://localhost:7231",
+            ValidAudience = "https://localhost:7231",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("gTqVff3L2j93ufiWf4l0"))
+        };
     });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy(
-      "read:messages",
-      policy => policy.Requirements.Add(
-        new HasScopeRequirement("read:messages", "https://dev-i1ukqqc3wcdbhyix.us.auth0.com")
-      )
-    );
-});
-
-builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
-
-
+builder.Services.AddMvc();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -57,6 +56,8 @@ app.UseHttpsRedirection();
 app.UseCors(policyName: "CORSPolicy");
 
 app.UseAuthentication();
+
+
 
 app.UseAuthorization();
 
